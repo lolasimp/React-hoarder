@@ -1,29 +1,50 @@
 import React from 'react';
-import stuffRequests from '../../firebaseReq/stuff';
+import Items from '../Items/Items';
+import auth from '../../firebaseRequests/auth';
+import itemRequests from '../../firebaseRequests/stuff';
+import myItems from '../../firebaseRequests/myStuff';
 import './AllStuff.css';
 
 class AllStuff extends React.Component {
   state = {
-    stuff: [],
+    items: [],
+    stuff: {},
+  }
+
+  addToMyStuff = (itemDetails) => {
+    const newItem = {...this.state.stuff};
+    newItem.itemName = itemDetails.itemName;
+    newItem.itemImage = itemDetails.itemImage;
+    newItem.itemDescription = itemDetails.itemDescription;
+    newItem.uid = auth.getUid();
+    myItems
+      .postRequest(newItem)
+      .then(() => {
+
+      })
+      .catch((err) => {
+        console.error('error in order post', err);
+      });
   }
 
   componentDidMount () {
-    stuffRequests
-      .getRequest()
-      .then((stuff) => {
-        this.setState({stuff});
+    itemRequests
+      .getAllStuff()
+      .then((items) => {
+        this.setState({items});
       })
       .catch((err) => {
-        console.error('error with stuff get request', err);
+        console.error('error with fish get request', err);
       });
   }
 
   render () {
-    const stuffComponents = this.state.stuff.map((item) => {
+    const itemComponents = this.state.items.map((item) => {
       return (
-        <allStuff
+        <Items
           key={item.id}
           details={item}
+          addToMyStuff={this.addToMyStuff}
         />
       );
     });
@@ -32,7 +53,7 @@ class AllStuff extends React.Component {
       <div className="AllStuff col-xs-12">
         <h1>All Stuff</h1>
         <ul className="item-list">
-          {stuffComponents}
+          {itemComponents}
         </ul>
       </div>
     );

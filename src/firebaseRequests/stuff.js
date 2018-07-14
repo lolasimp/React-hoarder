@@ -1,11 +1,11 @@
 import axios from 'axios';
 import constants from '../constants';
 
-const getRequest = () => {
+const getAllStuff = () => {
   return new Promise((resolve, reject) => {
     axios
       .get(`${constants.firebaseConfig.databaseURL}/allStuff.json`)
-      .then(res => {
+      .then((res) => {
         const allStuff = [];
         if (res.data !== null) {
           Object.keys(res.data).forEach(fbKey => {
@@ -15,10 +15,10 @@ const getRequest = () => {
         }
         resolve(allStuff);
       })
-      .catch(err => {
+      .catch((err) => {
         reject(err);
       });
   });
 };
 
-export default {getRequest};
+export default { getAllStuff };
