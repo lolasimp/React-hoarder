@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Home from '../components/Home/Home';
 import Login from '../components/Login/Login';
 import Register from '../components/Register/Register';
-import MyItem from '../components/MyItem/MyItem';
+import OneItem from '../components/OneItem/OneItem';
 import AllMyStuff from  '../components/AllMyStuff/AllMyStuff';
 import AllStuff from '../components/AllStuff/AllStuff';
 import fbConnection from '../firebaseRequests/connection';
@@ -103,9 +103,9 @@ class App extends Component {
                     component={AllStuff}
                   />
                   <PrivateRoute
-                    path="/myitem/:id"
+                    path="/oneitem/:id"
                     authed={this.state.authed}
-                    component={MyItem}
+                    component={OneItem}
                   />
                 </Switch>
               </div>
