@@ -35,9 +35,6 @@ class Navbar extends React.Component {
                     <li>
                       <Link to="/allstuff"> All Stuff</Link>
                     </li>
-                    <li>
-                      <Link to="/myitem"> My Item</Link>
-                    </li>
                     <li className="navbar-form">
                       <button
                         onClick={logoutClickEvent}

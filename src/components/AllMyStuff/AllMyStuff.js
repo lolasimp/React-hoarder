@@ -22,7 +22,7 @@ class MyStuff extends React.Component {
   render () {
     const myStuffComponents = this.state.stuffs.map(stuff => {
       const singleItemClick = () => {
-        this.props.history.push(`/singleitem/${stuff.id}`);
+        this.props.history.push(`/oneitem/${stuff.id}`);
       };
       return (
         <button

@@ -14,7 +14,7 @@ class OneItem extends React.Component {
   componentDidMount () {
     const firebaseId = this.props.match.params.id;
     myItems
-      .getSingleItem(firebaseId)
+      .getMyOneItem(firebaseId)
       .then((oneItemz) => {
         this.setState({item: oneItemz});
       })

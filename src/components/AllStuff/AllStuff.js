@@ -18,7 +18,7 @@ class AllStuff extends React.Component {
     newItem.itemDescription = itemDetails.itemDescription;
     newItem.uid = auth.getUid();
     myItems
-      .postRequest(newItem)
+      .postMyStuff(newItem)
       .then(() => {
 
       })
