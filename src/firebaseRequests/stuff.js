@@ -6,14 +6,14 @@ const getRequest = () => {
     axios
       .get(`${constants.firebaseConfig.databaseURL}/allStuff.json`)
       .then(res => {
-        const stuff = [];
+        const allStuff = [];
         if (res.data !== null) {
           Object.keys(res.data).forEach(fbKey => {
             res.data[fbKey].id = fbKey;
-            stuff.push(res.data[fbKey]);
+            allStuff.push(res.data[fbKey]);
           });
         }
-        resolve(stuff);
+        resolve(allStuff);
       })
       .catch(err => {
         reject(err);
